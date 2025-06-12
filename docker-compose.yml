@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  omega-manim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: omega-manim
+    volumes:
+      - ./:/manim
+      - ./media:/manim/media
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MANIM_VIDEO_DIR=/manim/media/videos
+      - MANIM_IMAGE_DIR=/manim/media/images
+    restart: unless-stopped 
